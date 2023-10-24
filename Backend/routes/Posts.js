@@ -23,10 +23,25 @@ router.get("/",  async (req, res) => {
 
 //getting post by id
 router.get(`/byid/:id`, async (req,res)=>{
-  const id=req.params.id
-  const post=await Post.findByPk(id)
+  const pid=req.params.id
+  const post=await Post.findByPk(pid)
   res.json(post)
 })
 
 
 module.exports = router;
+
+//getting post when user search by title
+// router.get(`/search/:value`,async(req,res)=>{
+//   const title=req.params.value
+//   const post = await Post.findAndCountAll({
+//     where :{
+//       Title:{
+//         [Op.like]:`%${title}%`
+//       }
+//     }
+//   })
+//   res.json(post)
+// })
+
+

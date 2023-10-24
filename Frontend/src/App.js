@@ -1,8 +1,10 @@
 import './App.css';
-import Post from './components/Post';
+// import Post from './components/Post';
 import { BrowserRouter as Router, Route, Routes,Link } from 'react-router-dom'
 import Home from './pages/Home';
 import Createpost from './pages/Createpost';
+// import Fullpost from './components/Fullpost';
+import Viewpost from './pages/Viewpost';
 import Fullpost from './components/Fullpost';
 
 
@@ -15,7 +17,7 @@ function App() {
         <Routes>
           <Route path='/' exact Component={Home}/>
           <Route path='/Createpost' exact Component={Createpost}/>
-          <Route path='/post/:id' exact Component={Fullpost}/>
+          <Route path='/post/:id' Component={Viewpost}/>
 
         </Routes>
       </Router>

@@ -33,7 +33,7 @@ const Post = () => {
     `
   const [allpost, setallpost] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:3001/post").then((res) => {
+    axios.get("http://localhost:3001/posts").then((res) => {
       setallpost(res.data)
     })
 
@@ -45,7 +45,7 @@ const Post = () => {
     <>{
       allpost.map((value, key) => {
         return (
-          <Postmaindiv onClick={()=>{navigate(`/post/${value.Post_ID}`)}} key={key}>
+          <Postmaindiv onClick={()=>{navigate(`/post/${value.pid}`)}} key={key}>
             <PostHeader>
               <PostTitle >{value.Title}</PostTitle>
             </PostHeader>

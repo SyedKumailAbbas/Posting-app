@@ -1,3 +1,9 @@
+APIs:
+/posts 
+/posts/byid/
+/comments
+/comments/
+
 Before starting project these modules you have to download;
 FOR BACKEND:
 	express
@@ -22,6 +28,13 @@ USER TABLE STRUCTURE FOR API TESTING
 			"Email":"Kumailabbas46@gmail.com",
 			"Password":"noice12N",
 	}
+POSTS TABLE STRUCTURE FOR API TESTING
+{
+  "Title":"New post number 1",
+  "Description": "here is the description of the first post",
+  "Price":34000
+}
+
 
 FOR FRONTEND:
 install 

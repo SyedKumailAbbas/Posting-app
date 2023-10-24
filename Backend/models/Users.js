@@ -1,7 +1,7 @@
 
 module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define("User", {
-        User_ID: {
+        uid: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
                 notEmpty: true
             }
         },
-        User_Name: {
+        username: {
             type: DataTypes.STRING,
             unique: true,
             allowNull: false,
@@ -18,28 +18,28 @@ module.exports = (sequelize, DataTypes) => {
                 notEmpty: true
             }
         },
-        FirstName: {
+        firstname: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 notEmpty: true
             }
         },
-        LastName: {
+        lastname: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 notEmpty: true
             }
         },
-        Gender: {
+        gender: {
             type: DataTypes.STRING,
             alllowNull: false,
             validate: {
                 notEmpty: true
             },
         },
-        PhoneNo: {
+        phoneno: {
             type: DataTypes.BIGINT,
             allowNull: false,
             validate: {
@@ -47,7 +47,7 @@ module.exports = (sequelize, DataTypes) => {
             },
             unique: true
         },
-        Email: {
+        email: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -55,7 +55,7 @@ module.exports = (sequelize, DataTypes) => {
             },
             unique: true
         },
-        Password: {
+        password: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -78,5 +78,10 @@ module.exports = (sequelize, DataTypes) => {
 
 
     })
+    User.associate=(models)=>{
+        User.hasMany(models.Post,{
+            onDelete:"cascade"
+        })
+    }
     return User
 }

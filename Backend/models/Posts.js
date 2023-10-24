@@ -1,7 +1,7 @@
 
 module.exports =(sequelize, DataTypes)=>{
     const Post=sequelize.define("Post",{
-            Post_ID:{
+            pid:{
                 type:DataTypes.INTEGER,
                 primaryKey:true,
                 autoIncrement:true,
@@ -32,9 +32,11 @@ module.exports =(sequelize, DataTypes)=>{
                 }
             },
 
-
-
-
     })
+    Post.associate=(models)=>{
+        Post.hasMany(models.Comment,{
+            onDelete:"cascade"
+        })
+    }
 return Post
 }
