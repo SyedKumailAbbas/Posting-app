@@ -13,6 +13,7 @@ FOR BACKEND:
 	sequelize
 	sequelize-cli
 	npm install -g sequelize-cli (if sequelize-cli not introduced to your terminal or cmd)
+	bcrypt
 
 Here we are using INSOMNIA for manual api testing in place of POSTMAN api
 
@@ -20,13 +21,13 @@ Here we are using INSOMNIA for manual api testing in place of POSTMAN api
 
 USER TABLE STRUCTURE FOR API TESTING
 	{
-			"User_Name":"kumail123",
-			"FirstName":"Kumail",
-			"LastName":"Abbas",
-			"Gender":"male",
-			"PhoneNo": "12345678901",
-			"Email":"Kumailabbas46@gmail.com",
-			"Password":"noice12N",
+			"username":"kumail123",
+			"firstname":"Kumail",
+			"lastname":"Abbas",
+			"gender":"male",
+			"phoneno": "12345678901",
+			"email":"Kumailabbas46@gmail.com",
+			"password":"noice12N"
 	}
 POSTS TABLE STRUCTURE FOR API TESTING
 {

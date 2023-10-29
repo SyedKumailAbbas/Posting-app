@@ -1,28 +1,32 @@
 import './App.css';
-// import Post from './components/Post';
-import { BrowserRouter as Router, Route, Routes,Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Home from './pages/Home';
 import Createpost from './pages/Createpost';
-// import Fullpost from './components/Fullpost';
 import Viewpost from './pages/Viewpost';
-import Fullpost from './components/Fullpost';
-
+import Login from './components/Login';
+import Register from './components/Register';
+import Auth from './pages/Auth';
 
 function App() {
   return (
     <>
       <Router>
-      <Link to ='/'>Home</Link>
-      <Link to ='/Createpost'>Create a post</Link>
+        <Link to="/">Home</Link>
+        <Link to="/Createpost">Create a post</Link>
+        <Link to="/auth">Login</Link>
+
         <Routes>
-          <Route path='/' exact Component={Home}/>
-          <Route path='/Createpost' exact Component={Createpost}/>
-          <Route path='/post/:id' Component={Viewpost}/>
+          <Route path="/" element={<Home />} />
+          <Route path="/Createpost" element={<Createpost />} />
+          <Route path="/post/:id" element={<Viewpost />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/register" element={<Register/>}/>
 
         </Routes>
       </Router>
+      
     </>
-  )
+  );
 }
 
 export default App;

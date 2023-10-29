@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
         username: {
             type: DataTypes.STRING,
             unique: true,
+            primaryKey:true,
             allowNull: false,
             validate: {
                 notEmpty: true
@@ -59,17 +60,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                isStrongPassword: function (value) {
-                    //defining here our custom validation 
-                    //Password must contain at least one digit, one lowercase letter, and one uppercase letter
-                    if (!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/.test(value)) {
-                        throw new Error(
-                            'Password must contain at least one digit, one lowercase letter, and one uppercase letter.'
-                        );
-                    }
-
-                },
-                // args: [6, 255],
+               notEmpty:true
             }
 
         },

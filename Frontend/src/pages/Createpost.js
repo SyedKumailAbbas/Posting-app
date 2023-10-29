@@ -1,9 +1,9 @@
 import React from 'react'
 import Postform from '../components/Postform'
-const Createpost=()=> {
+const Createpost = () => {
   return (
     <div>
-<Postform/>
+      <Postform />
 
     </div>
   )

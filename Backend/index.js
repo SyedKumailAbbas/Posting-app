@@ -3,7 +3,7 @@ const db = require('./models');
 const cors = require('cors');
 const postRouter = require('./routes/Posts');
 const commentRouter = require('./routes/Comments');
-const authRouter=require(`./routes/Auth`)
+const authRouter=require(`./routes/Auth`);
 const app = express();
 
 // Middleware
@@ -28,7 +28,7 @@ db.sequelize.sync()
     // Define your API routes
     app.use("/posts", postRouter);
     app.use("/comments", commentRouter);
-    // app.use("/auth", authRouter);
+    app.use("/auth", authRouter);
 
   })
   .catch((error) => {
