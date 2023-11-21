@@ -3,6 +3,7 @@ APIs:
 /posts/byid/
 /comments
 /comments/
+/auth/register
 
 Before starting project these modules you have to download;
 FOR BACKEND:
@@ -14,6 +15,7 @@ FOR BACKEND:
 	sequelize-cli
 	npm install -g sequelize-cli (if sequelize-cli not introduced to your terminal or cmd)
 	bcrypt
+	jsonwebtoken
 
 Here we are using INSOMNIA for manual api testing in place of POSTMAN api
 

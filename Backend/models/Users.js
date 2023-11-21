@@ -36,9 +36,7 @@ module.exports = (sequelize, DataTypes) => {
         gender: {
             type: DataTypes.STRING,
             alllowNull: false,
-            validate: {
-                notEmpty: true
-            },
+            
         },
         phoneno: {
             type: DataTypes.BIGINT,

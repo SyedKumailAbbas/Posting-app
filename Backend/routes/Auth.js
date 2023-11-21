@@ -2,32 +2,48 @@ const express = require("express");
 const { User } = require("../models");
 const bcrypt = require("bcrypt");
 const router = express.Router();
-
+const {sign}=require("jsonwebtoken")
 router.get('/', (req, res) => {
     res.json("hello");
 });
 
 //user registration
-router.post('/', async (req, res) => {
-    const { username, firstname, lastname, gender, phoneno, email, password } = req.body;
+router.post('/register', async (req, res) => {
+    const { username, fname, lname, gender, phoneno, email, password } = req.body;
 
     try {
+        const phone = await User.findOne({ where: { phoneno: phoneno } });
+        const usern = await User.findOne({ where: { username: username } });
+        const mail = await User.findOne({ where: { email: email } });
+
+        if (phone) {
+            return res.status(400).json({ error: "This phone number is used in another account" });
+        }
+        if (usern) {
+            return res.status(400).json({ error: "Choose a unique username" });
+        }
+        if (mail) {
+            return res.status(400).json({ error: "This email is used in another account" });
+        }
+
         const hash = await bcrypt.hash(password, 10);
         const user = await User.create({
             username: username,
-            firstname: firstname,
-            lastname: lastname,
+            firstname: fname,
+            lastname: lname,
             gender: gender,
             phoneno: phoneno,
             email: email,
             password: hash
         });
+
         res.status(201).json(user);
     } catch (error) {
         console.error("Error in creating user:", error);
         res.status(500).json({ error: "Could not create user" });
     }
 });
+
 
 //user login
 router.post("/login", async (req, res) => {
@@ -39,16 +55,15 @@ router.post("/login", async (req, res) => {
     }
 
     bcrypt.compare(password, user.password).then((match) => {
-        if (match) {
-            return res.json("You're logged in");
-        } else {
-            return res.status(401).json({ error: "Incorrect password" });
-        }
-    }).catch((error) => {
-        return res.status(500).json({ error: "An error occurred while comparing passwords" });
-    });
-});
+     if (!match) {
+        return res.json({ error: "Incorrect password" });
+    }
+    const Token = sign({username:User.username,id:User.uid},"haider")
+    res.json(Token);
 
+
+});
+})
 
 
 
