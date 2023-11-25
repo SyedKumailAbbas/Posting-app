@@ -17,8 +17,8 @@ module.exports =(sequelize, DataTypes)=>{
                     notEmpty:true
                 }
             }    ,
-            Description:{
-                type:DataTypes.STRING,
+            Price:{
+                type:DataTypes.INTEGER,
                 allowNull:false,
                 validate:{
                     notEmpty:true
@@ -35,7 +35,24 @@ module.exports =(sequelize, DataTypes)=>{
     })
     Post.associate=(models)=>{
         Post.hasMany(models.Comment,{
-            onDelete:"cascade"
+            foreignKey:"pid",
+            onDelete:"CASCADE"
+        }),
+        Post.hasOne(models.Location,{
+            foreignKey:"pid",
+            onDelete:"CASCADE",
+            onUpdate:"CASCADE"
+        }),
+
+        Post.hasOne(models.Image,{
+            foreignKey:"pid",
+            onDelete:"CASCADE",
+            onUpdate:"CASCADE"
+        }),
+        Post.hasOne(models.Description,{
+            foreignKey:"pid",
+            onDelete:"CASCADE",
+            onUpdate:"CASCADE"
         })
     }
 return Post

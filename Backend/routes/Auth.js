@@ -58,7 +58,7 @@ router.post("/login", async (req, res) => {
      if (!match) {
         return res.json({ error: "Incorrect password" });
     }
-    const Token = sign({username:User.username,id:User.uid},"haider")
+    const Token = sign({username:User.username,id:User.uid},"hellojani")
     res.json(Token);
 
 

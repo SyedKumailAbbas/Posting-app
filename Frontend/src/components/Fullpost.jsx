@@ -46,12 +46,22 @@ const Fullpost = () => {
 
     }, [])
 const addcomment=()=>{
-  axios.post(`http://localhost:3001/comments`,{Comment_Body:newcomment,PostPid:id}).then((res)=>{
+  axios.post(`http://localhost:3001/comments`,{Comment_Body:newcomment,PostPid:id},
+  {
+    headers:{
+      token:sessionStorage.getItem("token")
+    }
+  }
+  ).then((res)=>{
   const commenttoadd={Comment_Body:newcomment}
   setlistofcomments([...comments,commenttoadd])
   setcomment("")
-
   })
+  .catch((error)=>{
+
+    alert(error)
+  })
+  
 }
     return (
       <>

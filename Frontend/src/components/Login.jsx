@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
-import {  Link } from 'react-router-dom';
+import {  Link,useNavigate} from 'react-router-dom';
 import axios from 'axios';
 const Login = () => {
   const [username,setusername]=useState("")
   const [password,setpassword]=useState("")
-  
+  const navigate=useNavigate()
   const formSubmit = async () => {
     const data = {username:username,password:password}
       await axios.post(`http://localhost:3001/auth/login`, data).then((response)=>{
@@ -12,6 +12,7 @@ const Login = () => {
         console.log("Login successfully");
         if (response.data.error) alert(response.data.error)
         else sessionStorage.setItem("token",response.data)
+        navigate('/')
 
       });
 

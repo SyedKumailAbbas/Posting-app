@@ -23,6 +23,7 @@ router.get("/",  async (req, res) => {
 
 //getting post by id
 router.get(`/byid/:id`, async (req,res)=>{
+  const [userid,title,price,status,imageid,descid,locationid]=req.body
   const pid=req.params.id
   const post=await Post.findByPk(pid)
   res.json(post)
